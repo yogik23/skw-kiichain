@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { logger } from "../skw/logger.js";
-import { delay } from "../skw/config.js";
+import { delay, randomdelay } from "../skw/config.js";
 import { warpUnwarp_abi } from "../skw/abis.js";
 import { 
   usdt_address,
@@ -15,6 +15,14 @@ import {
   cekbalance,
   providerbalance,
 } from "../skw/helper.js";
+
+import {
+  amountWarp,
+  amountUnwarp,
+  amountswapKIItoUSDT,
+  amountswapKIItoUSDC,
+  amountswapKIItoWBTC,
+} from "../main.js";
 
 async function Warp(wallet, amount) {
   try {
@@ -66,7 +74,7 @@ async function Unwarp(wallet, unwarpamount) {
   }
 }
 
-async function swapKIItoUSDT(wallet, tokenIn, tokenOut, amount) {
+async function swapKIItoERC20(wallet, tokenIn, tokenOut, amount) {
   try {
     const iface = new ethers.Interface([
       "function execute(bytes commands, bytes[] inputs, uint256 deadline)"
@@ -140,20 +148,20 @@ async function swapKIItoUSDT(wallet, tokenIn, tokenOut, amount) {
 
 export async function swap(wallet) {
   try {
-    await Warp(wallet, "5");
-    await delay(5000);
+    await Warp(wallet, amountWarp);
+    await delay(randomdelay());
 
-    await Unwarp(wallet, "2");
-    await delay(5000);
+    await Unwarp(wallet, amountUnwarp);
+    await delay(randomdelay());
 
-    await swapKIItoUSDT(wallet, wKII_address, usdt_address, "0.1");
-    await delay(5000);
+    await swapKIItoERC20(wallet, wKII_address, usdt_address, amountswapKIItoUSDT);
+    await delay(randomdelay());
 
-    await swapKIItoUSDT(wallet, wKII_address, usdc_address, "0.1");
-    await delay(5000);
+    await swapKIItoERC20(wallet, wKII_address, usdc_address, amountswapKIItoUSDC);
+    await delay(randomdelay());
 
-    await swapKIItoUSDT(wallet, wKII_address, wbtc_address, "0.1");
-    await delay(5000);
+    await swapKIItoERC20(wallet, wKII_address, wbtc_address, amountswapKIItoWBTC);
+
   } catch (err) {
     logger.fail(`Function Swap Gagal ${err.message || err}\n`);
   }
