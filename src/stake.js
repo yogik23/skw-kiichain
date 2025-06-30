@@ -4,12 +4,12 @@ import { stake_address } from "../skw/contract.js";
 import { stake_abi } from "../skw/abis.js";
 import { getRandomValidator } from "../skw/config.js";
 
-export async function stake(wallet) {
+export async function stake(wallet, amountstake) {
   const contract = new ethers.Contract(stake_address, stake_abi, wallet);
   const validator = getRandomValidator();
-  const amount = ethers.parseUnits("1", 18);
+  const amount = ethers.parseUnits(amountstake, 18);
 
-  logger.start(`Staking 1 KII ke ${validator.moniker}`);
+  logger.start(`Staking ${amountstake} KII ke ${validator.moniker}`);
 
   try {
     const tx = await contract.delegate(
