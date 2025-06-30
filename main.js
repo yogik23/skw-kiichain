@@ -2,11 +2,13 @@ import { ethers } from "ethers";
 import { logger } from "./skw/logger.js";
 import { swap } from "./src/swap.js";
 import { addliquidity } from "./src/addliquidity.js";
+import { deploy } from "./src/deploy.js";
 
 import { 
   provider,
   privateKeys,
   delay,
+  randomdelay,
 } from "./skw/config.js";
 
 async function main() {
@@ -18,7 +20,7 @@ async function main() {
 
       await swap(wallet);
       await addliquidity(wallet);
-      await delay(5000);
+      await delay(randomdelay());
 
     }
   } catch (err) {
