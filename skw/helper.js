@@ -17,7 +17,7 @@ export async function cekbalance(wallet, tokenIn) {
     logger.balance(`Balance ${symbol} : ${fixbalance} `)
     return { balancewei, decimal, symbol } ;
   } catch (err) {
-    logError(`Error Cek Balance : ${err.message || err}\n`);
+    logger.fail(`Error Cek Balance : ${err.message || err}\n`);
   }
 }
 
