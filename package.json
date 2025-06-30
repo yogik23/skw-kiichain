@@ -1,0 +1,23 @@
+{
+  "name": "Kiichain Testnet",
+  "version": "1.0.0",
+  "description": "Kiichain Autobot",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [
+    "Kiichain",
+    "Testnet",
+    "Autobot"
+  ],
+  "author": "SKW-AIRDROP",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "dotenv": "^16.5.0",
+    "ethers": "^6.13.5",
+    "node-cron": "^4.0.5"
+  }
+}
