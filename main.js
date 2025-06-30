@@ -9,7 +9,15 @@ import {
   privateKeys,
   delay,
   randomdelay,
+  RandomAmount,
 } from "./skw/config.js";
+
+export const amountWarp = RandomAmount(3, 5, 0);
+export const amountUnwarp = RandomAmount(1, 2, 1);
+export const amountswapKIItoUSDT = RandomAmount(0.1, 1, 2);
+export const amountswapKIItoUSDC = RandomAmount(0.1, 1, 2);
+export const amountswapKIItoWBTC = RandomAmount(0.1, 1, 2);
+export const amountaddLP = RandomAmount(10, 15, 0);
 
 async function main() {
   console.clear();
@@ -21,7 +29,7 @@ async function main() {
       await swap(wallet);
       await delay(randomdelay());
       
-      await addliquidity(wallet);
+      await addliquidity(wallet, amountaddLP);
       await delay(randomdelay());
       
       await deploy(wallet);
