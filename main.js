@@ -19,7 +19,10 @@ async function main() {
       logger.account(`Wallet: ${wallet.address}`);
 
       //await swap(wallet);
-      await addliquidity(wallet);
+      //await addliquidity(wallet);
+      //await delay(randomdelay());
+      
+      await deploy(wallet);
       await delay(randomdelay());
 
     }
