@@ -25,9 +25,9 @@ export const amountaddLP = RandomAmount(10, 15, 0);
 export const amountstake = RandomAmount(1, 2, 0);
 
 async function startBot() {
-  console.clear();
   try {
     for (const pk of privateKeys) {
+      console.clear();
       const wallet = new ethers.Wallet(pk, provider);
       logger.account(`Wallet: ${wallet.address}`);
 
