@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { logger } from "../skw/logger.js";
-import { stake_address } from "../skw/contract.js";
+import { stake_address, explorer } from "../skw/contract.js";
 import { stake_abi } from "../skw/abis.js";
 import { getRandomValidator } from "../skw/config.js";
 
