@@ -6,4 +6,5 @@ export const swap_router = "0x08806c3a48e7a600c3a9183c00c718a0b890edca";
 export const lp_router = "0x841231aa31685321e0baed56e4b17cae093bf0fb";
 export const poolAddress = "0xda7cC656db6DE4c9CC0afD50364b83cA3a8d46e0";
 export const factoryAddress = "0x96F922980e5ad8Cd85CE2F57C984d3d46eC8a285";
+export const stake_address = "0x0000000000000000000000000000000000000800";
 export const explorer = "https://explorer.kiichain.io/transaction/";
