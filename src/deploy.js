@@ -74,7 +74,7 @@ export async function deploy(wallet) {
     
     if (receipt.status === 1) {
       logger.succes(`Deploy success`);
-      logger.info(`Contract ->> ${contract.target}\n`);
+      logger.info(`Contract yg dideploy ->> ${contract.target}\n`);
     } else {
       logger.fail(`Deploy failed: Status ${receipt.status}\n`);
     }
