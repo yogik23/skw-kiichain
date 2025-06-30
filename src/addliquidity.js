@@ -60,7 +60,7 @@ export async function addliquidity(wallet, amountaddLP) {
   const { balancewei: balance0, symbol: symbol0, decimal: decimal0 } = await cekbalance(wallet, token0);
   const { balancewei: balance1, symbol: symbol1, decimal: decimal1 } = await cekbalance(wallet, token1);
 
-  const parsedAmount0 = ethers.parseUnits(amountIn, decimal0);
+  const parsedAmount0 = ethers.parseUnits(amountaddLP, decimal0);
 
   const sqrtX96 = BigInt(poolInfo.sqrtPriceX96);
   const Q96 = BigInt(2) ** BigInt(96);
@@ -70,7 +70,7 @@ export async function addliquidity(wallet, amountaddLP) {
   const amount1Str = ethers.formatUnits(parsedAmount1, decimal1);
   const amount1DesiredStr = parseFloat(amount1Str).toFixed(5);
 
-  logger.start(`Add Liquidity ${amountIn} ${symbol0} >> ${amount1DesiredStr} ${symbol1}`);
+  logger.start(`Add Liquidity ${amountaddLP} ${symbol0} >> ${amount1DesiredStr} ${symbol1}`);
   await approve(wallet, token0, lp_router, parsedAmount0);
   await approve(wallet, token1, lp_router, parsedAmount1);
 
