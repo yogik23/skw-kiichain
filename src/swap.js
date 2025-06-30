@@ -114,10 +114,7 @@ async function swapKIItoUSDT(wallet, tokenIn, tokenOut, amount) {
       deadline
     ]);
 
-    const getBalance = await provider.getBalance(wallet.address);
-    const Balance = ethers.formatUnits(getBalance,18);
-    const formatbalance = parseFloat(Balance).toFixed(3);
-    logger.balance(`Balance KII : ${formatbalance} `);
+    await providerbalance(wallet);
     const { symbol } = await cekbalance(wallet, tokenOut);
     logger.start(`Swap ${amount} KII ke ${symbol}..`);
 
