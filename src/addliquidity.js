@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { logger } from "../skw/logger.js";
-import { delay } from "../skw/config.js";
+import { delay, provider } from "../skw/config.js";
 import { 
   lp_abi,
   POOL_ABI,
