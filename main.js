@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import cron from "node-cron";
+import { displayskw } from "./skw/displayskw.js";
 import { logger } from "./skw/logger.js";
 import { cekbalance } from "./skw/helper.js";
 import { ORO_address } from "./skw/contract.js";
@@ -25,6 +26,9 @@ export const amountaddLP = RandomAmount(10, 15, 0);
 export const amountstake = RandomAmount(1, 2, 0);
 
 async function startBot() {
+  displayskw();
+  await delay(6000);
+  console.clear();
   try {
     for (const pk of privateKeys) {
       console.clear();
