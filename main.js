@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import cron from "node-cron";
 import { logger } from "./skw/logger.js";
 import { swap } from "./src/swap.js";
 import { addliquidity } from "./src/addliquidity.js";
@@ -21,7 +22,7 @@ export const amountswapKIItoWBTC = RandomAmount(0.1, 1, 2);
 export const amountaddLP = RandomAmount(10, 15, 0);
 export const amountstake = RandomAmount(1, 2, 0);
 
-async function main() {
+async function startBot() {
   console.clear();
   try {
     for (const pk of privateKeys) {
@@ -44,6 +45,21 @@ async function main() {
   } catch (err) {
     logger.fail(`Function main Gagal ${err.message || err}\n`);
   }
+}
+
+async function main() {
+  const date = new Date().toISOString().split('T')[0];
+  cron.schedule('0 1 * * *', async () => { 
+    await startBot();
+    console.log();
+    logger.info(`${date} Cron AKTIF`);
+    logger.info('Besok Jam 08:00 WIB Autobot Akan Run');
+  });
+
+  await startBot();
+  console.log();
+  logger.info(`${date} Cron AKTIF`);
+  logger.info('Besok Jam 08:00 WIB Autobot Akan Run');
 }
 
 main();
