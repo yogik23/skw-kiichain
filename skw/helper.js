@@ -14,7 +14,7 @@ export async function cekbalance(wallet, tokenIn) {
     const balancewei = await contract.balanceOf(wallet.address);
     const formatbalance = ethers.formatUnits(balancewei, decimal);
     const fixbalance = parseFloat(formatbalance).toFixed(3);
-    logger.balance(`Balance ${name} : ${fixbalance} ${symbol}`)
+    logger.balance(`Balance ${symbol} : ${fixbalance} `)
     return { balancewei, decimal, symbol } ;
   } catch (err) {
     logError(`Error Cek Balance : ${err.message || err}\n`);
@@ -26,7 +26,7 @@ export async function providerbalance(wallet) {
     const balance = await provider.getBalance(wallet.address);
     const ethBalance = ethers.formatEther(balance);
     const fixedAmount = parseFloat(ethBalance).toFixed(4);
-    logger.account(`${wallet.address} ${fixedAmount} KII`);
+    logger.balance(`Balance KII : ${fixedAmount}`);
 
   } catch (err) {
     logger.fail(`Provider get balance Gagal ${err.message || err}\n`);
