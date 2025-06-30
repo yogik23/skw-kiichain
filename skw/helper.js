@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import { logger } from "./logger.js";
 import { erc20Abi } from "./abis.js";
 import { provider } from "./config.js";
-import { explore } from "./contract.js";
+import { explorer } from "./contract.js";
 
 export async function cekbalance(wallet, tokenIn) {
   try {
