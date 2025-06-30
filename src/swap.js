@@ -22,7 +22,7 @@ import {
   amountswapKIItoUSDT,
   amountswapKIItoUSDC,
   amountswapKIItoWBTC,
-} from "../skw/amount.js";
+} from "../main.js";
 
 async function Warp(wallet, amount) {
   try {
