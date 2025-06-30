@@ -12,12 +12,6 @@ import {
 } from "../skw/contract.js";
 
 import { 
-  provider,
-  privateKeys,
-  delay,
-} from "../skw/config.js";
-
-import { 
   cekbalance,
   providerbalance,
 } from "../skw/helper.js";
