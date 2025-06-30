@@ -1,0 +1,9 @@
+export const usdt_address = "0x1a9992f48de81c57d38147f3c573e84575021de6";
+export const usdc_address = "0xb72ffa8e8079365c1890948464b542e42eec892b";
+export const wbtc_address = "0x7806bbef4f5aba0bd0e96139eeeb2df88e7839e5";
+export const wKII_address = "0xd51e7187e54a4a22d790f8bbddd9b54b891bc920";
+export const swap_router = "0x08806c3a48e7a600c3a9183c00c718a0b890edca";
+export const lp_router = "0x841231aa31685321e0baed56e4b17cae093bf0fb";
+export const poolAddress = "0xda7cC656db6DE4c9CC0afD50364b83cA3a8d46e0";
+export const factoryAddress = "0x96F922980e5ad8Cd85CE2F57C984d3d46eC8a285";
+export const explorer = "https://explorer.kiichain.io/transaction/";
