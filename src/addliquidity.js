@@ -1,10 +1,9 @@
 import { ethers } from "ethers";
 import { logger } from "../skw/logger.js";
 import { delay, provider } from "../skw/config.js";
-import { 
-  lp_abi,
-  POOL_ABI,
-} from "../skw/abis.js";
+import { lp_abi, POOL_ABI } from "../skw/abis.js";
+import { cekbalance, approve } from "../skw/helper.js";
+import { amountaddLP } from "../main.js";
 
 import { 
   usdt_address,
@@ -13,11 +12,6 @@ import {
   poolAddress,
   explorer,
 } from "../skw/contract.js";
-
-import { 
-  cekbalance,
-  approve,
-} from "../skw/helper.js";
 
 async function getPoolInfo(poolAddress, tokenA, tokenB) {
   const pool = new ethers.Contract(poolAddress, POOL_ABI, provider);
@@ -47,7 +41,7 @@ async function getPoolInfo(poolAddress, tokenA, tokenB) {
   };
 }
 
-async function addlp(wallet, amountIn) {
+export async function addliquidity(wallet, amountaddLP) {
   const tokenA = usdt_address;
   const tokenB = wKII_address;
   const fee = 3000;
@@ -131,13 +125,3 @@ async function addlp(wallet, amountIn) {
   }
 }
 
-export async function addliquidity(wallet) {
-  try {
-    const amountIn = "10";
-    await addlp(wallet, amountIn);
-    await delay(5000);
-
-  } catch (err) {
-    logger.fail(`Function addliquidity Eror: ${err.reason || err.message}`);
-  }
-}
