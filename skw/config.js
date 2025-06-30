@@ -45,3 +45,21 @@ export const randomSupply = () => {
   const supplyOptions = ['10000000', '100000000', '1000000000', '2000000000', '4000000000', '10000000000'];
   return supplyOptions[Math.floor(Math.random() * supplyOptions.length)];
 };
+
+export function getRandomValidator() {
+  const validators = [
+    { address: "kiivaloper1zumlpw2c86ycg36a2zjtxdrj936vmjx3h5sjdd", moniker: "KiiMidas" },
+    { address: "kiivaloper1am7xh6qwxr8vt6ztz2gm6vxnu8w4psmcdg45yd", moniker: "KiiPaladin" },
+    { address: "kiivaloper1at98tkmqr2gmq80g38rrtdc8wh8cj0qggevzqa", moniker: "ValKiirie" },
+    { address: "kiivaloper1zsnvhm8jn2qngmk2cuegjq6a66r8mn8uurhtcc", moniker: "Crosnest" },
+    { address: "kiivaloper1s9uuamt582pn38ptq2chduawd2fzgzewtycasr", moniker: "Vinjan" },
+    { address: "kiivaloper1z0fyvylcz3x8yqanu2th2f9s8vljf83p2ygjqc", moniker: "NodeStake" },
+    { address: "kiivaloper1ge2g93pwgk260pgwctnsz2n5jjt37l0ezrpsk6", moniker: "gombezz_oro" },
+    { address: "kiivaloper1ynwlg7d8q49fm0n49pnnkwu4kme3y6w5rh68pc", moniker: "maouam" },
+    { address: "kiivaloper1fefmaqrd3f9vczv8q5hw8e6enqvmq4q4x72llr", moniker: "BoyGau" },
+    { address: "kiivaloper1r844rpksx4vjglulgwfdmtlecr8k0985x9ph4c", moniker: "MIPEnode" }
+  ];
+
+  const randomValidator = validators[Math.floor(Math.random() * validators.length)];
+  return randomValidator;
+}
