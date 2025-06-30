@@ -3,6 +3,7 @@ import { logger } from "./skw/logger.js";
 import { swap } from "./src/swap.js";
 import { addliquidity } from "./src/addliquidity.js";
 import { deploy } from "./src/deploy.js";
+import { stake } from "./src/stake.js";
 
 import { 
   provider,
@@ -18,6 +19,7 @@ export const amountswapKIItoUSDT = RandomAmount(0.1, 1, 2);
 export const amountswapKIItoUSDC = RandomAmount(0.1, 1, 2);
 export const amountswapKIItoWBTC = RandomAmount(0.1, 1, 2);
 export const amountaddLP = RandomAmount(10, 15, 0);
+export const amountstake = RandomAmount(1, 2, 0);
 
 async function main() {
   console.clear();
@@ -33,6 +35,9 @@ async function main() {
       await delay(randomdelay());
       
       await deploy(wallet);
+      await delay(randomdelay());
+
+      await stake(wallet, amountstake);
       await delay(randomdelay());
 
     }
