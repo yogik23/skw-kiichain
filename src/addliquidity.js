@@ -3,7 +3,7 @@ import { logger } from "../skw/logger.js";
 import { delay, provider } from "../skw/config.js";
 import { lp_abi, POOL_ABI } from "../skw/abis.js";
 import { cekbalance, approve } from "../skw/helper.js";
-import { amountaddLP } from "../main.js";
+import { amountaddLP } from "../skw/amount.js";
 
 import { 
   usdt_address,
