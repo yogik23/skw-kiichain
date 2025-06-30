@@ -18,9 +18,11 @@ async function main() {
       const wallet = new ethers.Wallet(pk, provider);
       logger.account(`Wallet: ${wallet.address}`);
 
-      //await swap(wallet);
-      //await addliquidity(wallet);
-      //await delay(randomdelay());
+      await swap(wallet);
+      await delay(randomdelay());
+      
+      await addliquidity(wallet);
+      await delay(randomdelay());
       
       await deploy(wallet);
       await delay(randomdelay());
