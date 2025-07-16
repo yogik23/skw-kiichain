@@ -2,8 +2,7 @@ import { ethers } from "ethers";
 import cron from "node-cron";
 import { displayskw } from "./skw/displayskw.js";
 import { logger } from "./skw/logger.js";
-import { cekbalance } from "./skw/helper.js";
-import { ORO_address } from "./skw/contract.js";
+import { cekpoint } from "./src/cekpoint.js";
 import { swap } from "./src/swap.js";
 import { addliquidity } from "./src/addliquidity.js";
 import { deploy } from "./src/deploy.js";
@@ -11,7 +10,9 @@ import { stake } from "./src/stake.js";
 
 import { 
   provider,
+  seedPhrases,
   privateKeys,
+  createWallet,
   delay,
   randomdelay,
   RandomAmount,
@@ -29,10 +30,13 @@ async function startBot() {
   displayskw();
   await delay(6000);
   console.clear();
+
+  const allKeys = [...seedPhrases, ...privateKeys];
+
   try {
-    for (const pk of privateKeys) {
+    for (const key of allKeys) {
       console.clear();
-      const wallet = new ethers.Wallet(pk, provider);
+      const wallet = createWallet(key, provider);
       logger.account(`Wallet: ${wallet.address}`);
 
       await swap(wallet);
@@ -47,7 +51,7 @@ async function startBot() {
       await stake(wallet, amountstake);
       await delay(randomdelay());
 
-      await cekbalance(wallet, ORO_address);
+      await cekpoint(wallet);
       await delay(randomdelay());
 
     }
