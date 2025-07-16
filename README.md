@@ -21,13 +21,25 @@
 
 1. Clone repo dan masuk ke folder
     ```
-    git clone hhttps://github.com/yogik23/skw-kiichain.git && cd skw-kiichain
+    git clone https://github.com/yogik23/skw-kiichain.git && cd skw-kiichain
     ```
 2. Install Module
     ```
     npm install
     ```
-3. Submit PrivateKey di `privatekey.txt`
+3. Submit PrivateKey atau SeedPharse \
+   Jika Menggunakan SeedPharse
+    ```
+    nano seedPhrase.txt
+    ```
+   format seedPhrase.txt
+    ```
+    seed1 seed1 seed1..
+    seed2 seed2 seed2..
+    seed3 seed3 seed3..
+    ```
+    
+    Jika Menggunakan PrivateKey
     ```
     nano privatekey.txt
     ```
@@ -37,7 +49,7 @@
     Privatekey2....
     Privatekey3....
     ```
-4. Jalankan bot 
+5. Jalankan bot 
     ```
     npm start
     ```
