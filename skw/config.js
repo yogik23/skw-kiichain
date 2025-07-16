@@ -9,10 +9,25 @@ const __dirname = path.dirname(__filename);
 const RPC = "https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com/";
 export const provider = new ethers.JsonRpcProvider(RPC);
 
+export const seedPhrases = fs.readFileSync(path.join(__dirname, "../seedPhrase.txt"), "utf-8")
+  .split("\n").map(k => k.trim()).filter(k => k.length > 0);
+
 export const privateKeys = fs.readFileSync(path.join(__dirname, "../privatekey.txt"), "utf-8")
-  .split("\n")
-  .map(k => k.trim())
-  .filter(k => k.length > 0);
+  .split("\n").map(k => k.trim()).filter(k => k.length > 0);
+
+export function seedPhraseToPrivateKey(seedPhrase) {
+  const wallet = ethers.HDNodeWallet.fromPhrase(seedPhrase);
+  return wallet.privateKey;
+}
+
+export function createWallet(key, provider) {
+  if (key.length === 66 && key.startsWith("0x")) {
+    return new ethers.Wallet(key, provider);
+  } else {
+    const privateKey = seedPhraseToPrivateKey(key);
+    return new ethers.Wallet(privateKey, provider);
+  }
+}
 
 export const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
